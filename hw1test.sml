@@ -9,7 +9,9 @@ val test1a = is_older((3,3,3),(3,3,4)) = true
 val test1b = is_older((3,2,5),(3,3,4)) = true
 
 
-val test2 = number_in_month([(2012,2,28),(2013,12,1)],2) = 1
+val test2a = number_in_month([(2012,2,28),(2013,12,1)],2) = 1
+val test2b = number_in_month([(1984,6,7),(1985,12,1), (1983,4,10), (1990,6,11)],6) = 2
+
 
 val test3 = number_in_months([(2012,2,28),(2013,12,1),(2011,3,31),(2011,4,28)],[2,3,4]) = 3
 
