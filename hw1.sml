@@ -35,10 +35,10 @@ fun number_in_months(dates: (int*int*int)list, months: (int)list ) =
           + number_in_months(dates, (tl months))
 
 fun dates_in_month(dates: (int*int*int)list, month: int) =
-    result = []
     if null dates
-    then result
-    else 
+    then []
+    else
         if #2 (hd dates) = month 
-        then 1 + dates_in_month((tl dates), month)
+        then (hd dates) :: dates_in_month((tl dates), month)
         else dates_in_month((tl dates), month) 
+
