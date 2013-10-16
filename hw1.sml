@@ -22,4 +22,17 @@ fun number_in_month (dates: (int*int*int) list, month: int ) =
 	if #2 (hd dates) = month
         then 1 + number_in_month(tl(dates), month)
         else number_in_month(tl(dates), month)
- 
+
+(*3. Write a function number_in_months that takes a list of dates and a list 
+of months (i.e., an int list) and returns the number of dates in the list of 
+dates that are in any of the months in the list of months.
+Assume the list of months has no number repeated.
+Hint: Use your answer to the previous problem. *) 
+fun number_in_months(dates: (int*int*int)list, months: (int)list ) = 
+    if null months
+    then 0
+    else  number_in_month(dates, (hd months)) 
+          + number_in_months(dates, (tl months)) 
+
+
+
