@@ -44,7 +44,7 @@ fun dates_in_month (dates: (int*int*int)list, month: int) =
 
 fun dates_in_months (dates: (int*int*int)list, months: (int)list) = 
     if null months
-    then dates
+    then dates[]
     else 
          dates_in_month (dates, hd months) @ dates_in_months(dates, tl months)    
 
@@ -62,7 +62,7 @@ fun date_to_string (date: (int*int*int)) =
     end
 
 fun number_before_reaching_sum (sum: int, numbers: int list) = 
-    if sum < 0
+    if sum <= 0
     then 0
     else 
         1 + number_before_reaching_sum(sum - hd numbers, tl numbers) 
