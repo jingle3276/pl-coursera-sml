@@ -28,13 +28,13 @@ of months (i.e., an int list) and returns the number of dates in the list of
 dates that are in any of the months in the list of months.
 Assume the list of months has no number repeated.
 Hint: Use your answer to the previous problem. *) 
-fun number_in_months(dates: (int*int*int)list, months: (int)list ) = 
+fun number_in_months (dates: (int*int*int)list, months: (int)list ) = 
     if null months
     then 0
     else  number_in_month(dates, (hd months)) 
           + number_in_months(dates, (tl months))
 
-fun dates_in_month(dates: (int*int*int)list, month: int) =
+fun dates_in_month (dates: (int*int*int)list, month: int) =
     if null dates
     then []
     else
@@ -42,21 +42,33 @@ fun dates_in_month(dates: (int*int*int)list, month: int) =
         then (hd dates) :: dates_in_month((tl dates), month)
         else dates_in_month((tl dates), month) 
 
-fun dates_in_months(dates: (int*int*int)list, months: (int)list) = 
+fun dates_in_months (dates: (int*int*int)list, months: (int)list) = 
     if null months
     then dates
     else 
          dates_in_month (dates, hd months) @ dates_in_months(dates, tl months)    
 
-fun get_nth(words: string list, n: int) = 
+fun get_nth (words: string list, n: int) = 
     if n = 1
     then hd words
     else get_nth(tl words, n-1)
 
-fun date_to_string(date: (int*int*int)) =
+fun date_to_string (date: (int*int*int)) =
     let 
        val months = ["January", "February", "March", "April", "May", "June", 
         "July", "August", "September", "October", "November", "December"]
     in 
        get_nth(months, #2 date) ^ " " ^ Int.toString(#3 date) ^ ", " ^ Int.toString(#1 date) 
     end
+
+fun number_before_reaching_sum (sum: int, numbers: int list) = 
+    if sum < 0
+    then 0
+    else 
+        1 + number_before_reaching_sum(sum - hd numbers, tl numbers) 
+  
+fun what_month (day: int) = 
+    let val day_list = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30 ,31]
+    in  1 + number_before_reaching_sum(day, day_list)
+    end 
+
